@@ -9,7 +9,10 @@ import java.io.File;
 import java.util.Map;
 
 public class SlackTest {
-    public static final String TOKEN = "xoxp-95224877543-210085453634-1108395473127-691785cd188cd23719ac5f66001b5b63";
+    /**
+     * https://api.slack.com/tutorials/slack-apps-and-postman
+     */
+    public static final String TOKEN = "xoxp-95224877543-210085453634-1147169905824-4f583920f429a5fd3c8dd61083888fd5";
 
     /**
      *
@@ -38,13 +41,13 @@ public class SlackTest {
      */
     @Test
     public void 파일업로드() throws Exception {
-        File file = new File("C:\\파일첨부 메뉴얼v1.1.pdf");
+        File file = new File("F:\\발표자료\\2020년워크샾.pptx");
         HttpUtil httpUtil = new HttpUtil("https://slack.com/api/files.upload");
         String response = httpUtil.addParam("token", TOKEN)
-                .addParam("channels", "C013T9Y5A0L")
-                .addParam("text", "test")
+                .addParam("channels", "D65FK4801")
                 .addParam("file", file)
                 .addParam("filename", file.getName())
+                .addParam("initial_comment", "initial_comment")
                 .submit();
         System.out.println(file.getName());
         System.out.println(response);
